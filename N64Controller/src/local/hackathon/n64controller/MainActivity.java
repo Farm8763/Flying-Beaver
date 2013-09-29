@@ -102,11 +102,13 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initButtonsDefault();
-
     }
-        
-
+    
+    @Override
+    protected void onStart(){
+    	initButtonsDefault();
+    }
+    
     public void UDPTest(View button) throws UnknownHostException {
     	Log.i("MyActivity", "Jared is a nice person...");
     	
