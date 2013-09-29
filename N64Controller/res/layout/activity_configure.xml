@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/TextView01"
         android:layout_below="@+id/TextView01"
-        android:ems="10" 
+        android:ems="10"
         android:inputType="text">
 
         <requestFocus />
