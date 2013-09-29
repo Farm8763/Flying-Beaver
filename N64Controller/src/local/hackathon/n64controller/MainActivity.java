@@ -147,7 +147,6 @@ interface RightJoystick
 
 public class MainActivity extends Activity {
 
-	@SuppressLint("NewApi")
 	public void initButtonsDefault(){
 		Display display = getWindowManager().getDefaultDisplay();
 		Point size = new Point();
