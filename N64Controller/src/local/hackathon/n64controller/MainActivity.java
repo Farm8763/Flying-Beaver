@@ -143,6 +143,7 @@ public class MainActivity extends Activity {
 		return true;
 		case (MotionEvent.ACTION_MOVE) :
 			Log.d("Main","Action was MOVE");
+			gameController.update(new Point((int)MotionEventCompat.getX(event, index),(int)MotionEventCompat.getX(event, index)), index);
 		return true;
 		case (MotionEvent.ACTION_UP) :
 			Log.d("Main","Action was UP");
@@ -150,6 +151,7 @@ public class MainActivity extends Activity {
 		return true;
 		case (MotionEvent.ACTION_CANCEL) :
 			Log.d("Main","Action was CANCEL");
+			gameController.update(new Point((int)MotionEventCompat.getX(event, index),(int)MotionEventCompat.getX(event, index)), index);
 		return true;
 		case (MotionEvent.ACTION_OUTSIDE) :
 			Log.d("Main","Movement occurred outside bounds " +
