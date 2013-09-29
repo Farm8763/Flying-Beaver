@@ -38,28 +38,30 @@ interface GamePad
     public static final int left_joystick = 19;
     public static final int right_joystick = 20;
 }
+
 interface LeftJoystick
 {
-	public static final int x_location_start = 1;
-	public static final int x_location_end = 1;
-	public static final int y_location_start = 1;
-	public static final int y_location_end = 1;
+	public static int x_location = 1;
+	public static int y_location = 1;
+	public static int radius = 1;
 }
 
 interface RightJoystick
 {
-	public static final int x_location_start = 1;
-	public static final int x_location_end = 1;
-	public static final int y_location_start = 1;
-	public static final int y_location_end = 1;
+	public static int x_location = 1;
+	public static int y_location = 1;
+	public static int radius = 1;
 }
 
 public class MainActivity extends Activity {
 
+	private UdpConnection udpConnection;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
     }
     
     public void UDPtest(View button) throws UnknownHostException {
@@ -70,9 +72,6 @@ public class MainActivity extends Activity {
     	Thread t = new Thread(new UdpConnection(ip_address, socket));
     	t.start();
     }
-    
-    //Jared sucks.
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -128,7 +127,7 @@ public class MainActivity extends Activity {
 	
 	private boolean inX(String string, float x) {
 		if(string == "Right"){
-			if(x>= RightJoystick.x_location_start && x<=RightJoystick.x_location_end){
+			if(x>= RightJoystick.x_location - RightJoystick.radius && x<=RightJoystick.x_location + RightJoystick.radius){
 				return true;
 			}
 			else{
@@ -136,7 +135,7 @@ public class MainActivity extends Activity {
 			}
 		}
 		else if(string == "Left"){
-			if(x >= LeftJoystick.x_location_start && x <= LeftJoystick.x_location_end){
+			if(x >= LeftJoystick.x_location - LeftJoystick.radius && x <= LeftJoystick.x_location + LeftJoystick.radius){
 				return true;
 			}
 			else{
@@ -148,7 +147,7 @@ public class MainActivity extends Activity {
 
 	private boolean inY(String string, float y) {
 		if(string == "Right"){
-			if(y>= RightJoystick.y_location_start && y<=RightJoystick.y_location_end){
+			if(y>= RightJoystick.y_location - RightJoystick.radius && y<=RightJoystick.y_location + RightJoystick.radius){
 				return true;
 			}
 			else{
@@ -156,7 +155,7 @@ public class MainActivity extends Activity {
 			}
 		}
 		else if(string == "Left"){
-			if(y >= LeftJoystick.y_location_start && y <= LeftJoystick.y_location_end){
+			if(y >= LeftJoystick.y_location - LeftJoystick.radius && y <= LeftJoystick.y_location + LeftJoystick.radius){
 				return true;
 			}
 			else{
