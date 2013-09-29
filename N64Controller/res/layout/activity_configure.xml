@@ -54,7 +54,7 @@
         android:text="@string/_4" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/ipTextbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/TextView01"
@@ -76,13 +76,13 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/portTextbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editText2"
-        android:layout_alignBottom="@+id/editText2"
+        android:layout_alignBaseline="@+id/ipTextbox"
+        android:layout_alignBottom="@+id/ipTextbox"
         android:layout_marginLeft="18dp"
-        android:layout_toRightOf="@+id/editText2"
+        android:layout_toRightOf="@+id/ipTextbox"
         android:ems="10"
         android:inputType="text" />
 
@@ -90,8 +90,18 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editText1"
-        android:layout_alignLeft="@+id/editText1"
+        android:layout_above="@+id/portTextbox"
+        android:layout_alignLeft="@+id/portTextbox"
         android:text="@string/port_number" />
+
+    <Button
+        android:id="@+id/saveConfigure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/portTextbox"
+        android:layout_below="@+id/portTextbox"
+        android:layout_marginTop="35dp"
+        android:text="Save Settings" 
+        android:onClick="SaveConfig"/>
 
 </RelativeLayout>
