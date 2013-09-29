@@ -86,8 +86,8 @@ public class UdpConnection implements Runnable{
 					 myController.res1.getState() << 6 ||
 					 myController.res2.getState() << 7;
 		
-		message[3] = myController.X_AXIS.getXAxis();
-		message[4] = myController.Y_AXIS.getYAxis();
+		message[3] = myController.joyStick.getXAxis();
+		message[4] = myController.joyStick.getYAxis();
 		
 		DatagramPacket p = new DatagramPacket(message, msg_length, ip_address, socket);
 		

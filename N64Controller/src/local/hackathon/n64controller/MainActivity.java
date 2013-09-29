@@ -103,7 +103,7 @@ public class MainActivity extends Activity {
     	
     	InetAddress ip_address = InetAddress.getByName("192.168.1.17");
     	int socket = 6969;
-    	Thread t = new Thread(new UdpConnection(ip_address, socket));
+    	Thread t = new Thread(new UdpConnection(ip_address, socket, gameController));
     	t.start();
     }
 
