@@ -1,4 +1,0 @@
-INDEX VERSION 1.126+/Users/safarir/Documents/Workspaces/Fying-Beaver/.metadata/.plugins/org.eclipse.jdt.core
-2393018036.index
-3247841644.index
-2950427601.index
