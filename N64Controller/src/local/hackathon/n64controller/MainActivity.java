@@ -10,6 +10,7 @@ import android.support.v4.view.MotionEventCompat;
 import android.util.Log;
 import android.view.Menu;
 
+import android.view.Display;
 import android.view.View;
 import android.view.MotionEvent;
 import android.graphics.*;
@@ -36,9 +37,101 @@ interface GamePad
   
     public static final int X_AXIS = 0x10;
     public static final int Y_AXIS = 0x11;
+    
 }
 
 interface LeftJoystick
+{
+	public static int x_location = 1;
+	public static int y_location = 1;
+	public static int radius = 1;
+}
+
+interface a
+{
+	public static int x_location = 1;
+	public static int y_location = 1;
+	public static int radius = 1;
+}
+
+interface c_down
+{
+	public static int x_location = 1;
+	public static int y_location = 1;
+	public static int radius = 1;
+}
+
+interface c_up
+{
+	public static int x_location = 1;
+	public static int y_location = 1;
+	public static int radius = 1;
+}
+
+interface c_right
+{
+	public static int x_location = 1;
+	public static int y_location = 1;
+	public static int radius = 1;
+}
+
+interface c_left
+{
+	public static int x_location = 1;
+	public static int y_location = 1;
+	public static int radius = 1;
+}
+
+interface l_bumper
+{
+	public static int x_location = 1;
+	public static int y_location = 1;
+	public static int radius = 1;
+}
+
+interface r_bumper
+{
+	public static int x_location = 1;
+	public static int y_location = 1;
+	public static int radius = 1;
+}
+
+interface start
+{
+	public static int x_location = 1;
+	public static int y_location = 1;
+	public static int radius = 1;
+}
+
+interface z
+{
+	public static int x_location = 1;
+	public static int y_location = 1;
+	public static int radius = 1;
+}
+
+interface up_arrow
+{
+	public static int x_location = 1;
+	public static int y_location = 1;
+	public static int radius = 1;
+}
+
+interface down_arrow
+{
+	public static int x_location = 1;
+	public static int y_location = 1;
+	public static int radius = 1;
+}
+
+interface left_arrow
+{
+	public static int x_location = 1;
+	public static int y_location = 1;
+	public static int radius = 1;
+}
+
+interface right_arrow
 {
 	public static int x_location = 1;
 	public static int y_location = 1;
@@ -54,6 +147,16 @@ interface RightJoystick
 
 public class MainActivity extends Activity {
 
+	public void initButtonsDefault(){
+		Display display = getWindowManager().getDefaultDisplay();
+		Point size = new Point();
+		display.getSize(size);
+		int width = size.x;
+		int height = size.y;
+		
+		
+	}
+	
 	private UdpConnection udpConnection;
 	
     @Override

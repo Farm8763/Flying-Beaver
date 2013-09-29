@@ -56,6 +56,56 @@ public class Controller {
 	}
 	
 	public void update(Point p) {
-		
+		if (rPad.isInside(p)) {
+			
+		}
+		else if (lPad.isInside(p)) {
+			
+		}
+		else if (dPad.isInside(p)) {
+			
+		}
+		else if (uPad.isInside(p)) {
+			
+		}
+		else if (start.isInside(p)) {
+			
+		}
+		else if (zTrig.isInside(p)) {
+			
+		}
+		else if (bBut.isInside(p)) {
+			
+		}
+		else if (aBut.isInside(p)) {
+			
+		}
+		else if (rCBut.isInside(p)) {
+			
+		}
+		else if (lCBut.isInside(p)) {
+			
+		}
+		else if (dCBut.isInside(p)) {
+			
+		}
+		else if (uCBut.isInside(p)) {
+			
+		}
+		else if (rTrig.isInside(p)) {
+			
+		}
+		else if (lTrig.isInside(p)) {
+			
+		}
+		else if (res1.isInside(p)) {
+			
+		}
+		else if (res2.isInside(p)) {
+			
+		}
+		else {
+			joyStick.setAxes(p);
+		}
 	}
 }

@@ -68,23 +68,23 @@ public class UdpConnection implements Runnable{
 		byte[] message = new byte[5];
 		message[0] = controllerAddress;
 		
-		message[1] = myController.rPad.getState() << R_DPAD ||
-					 myController.lPad.getState() << L_DPAD ||  
-					 myController.dPad.getState() << D_DPAD ||
-					 myController.uPad.getState() << U_DPAD ||
-					 myController.start.getState() << START_BUTTON ||
-					 myController.zTrig.getState() << Z_TRIG ||
-					 myController.bBut.getState() << B_BUTTON ||
-					 myController.aBut.getState() << A_BUTTON;
+		message[1] = myController.rPad.getState() << 0 ||
+					 myController.lPad.getState() << 1 ||  
+					 myController.dPad.getState() << 2 ||
+					 myController.uPad.getState() << 3 ||
+					 myController.start.getState() << 4 ||
+					 myController.zTrig.getState() << 5 ||
+					 myController.bBut.getState() << 6 ||
+					 myController.aBut.getState() << 7;
 		
-		message[2] = myController.rCBut.getState() << R_CBUTTON ||
-					 myController.lCBut.getState() << L_CBUTTON ||
-					 myController.dCBut.getState() << D_CBUTTON ||
-					 myController.uCBut.getState() << U_CBUTTON ||
-					 myController.rTrig.getState() << R_TRIG ||
-					 myController.lTrig.getState() << L_TRIG ||
-					 myController.res1.getState() << Reserved1 ||
-					 myController.res2.getState() << Reserved2;
+		message[2] = myController.rCBut.getState() << 0 ||
+					 myController.lCBut.getState() << 1 ||
+					 myController.dCBut.getState() << 2 ||
+					 myController.uCBut.getState() << 3 ||
+					 myController.rTrig.getState() << 4 ||
+					 myController.lTrig.getState() << 5 ||
+					 myController.res1.getState() << 6 ||
+					 myController.res2.getState() << 7;
 		
 		message[3] = myController.X_AXIS.getXAxis();
 		message[4] = myController.Y_AXIS.getYAxis();
