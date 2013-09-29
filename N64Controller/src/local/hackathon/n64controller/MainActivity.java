@@ -41,16 +41,16 @@ interface GamePad
 
 interface LeftJoystick
 {
-	public static final int x_location = 1;
-	public static final int y_location = 1;
-	public static final int radius = 1;
+	public static int x_location = 1;
+	public static int y_location = 1;
+	public static int radius = 1;
 }
 
 interface RightJoystick
 {
-	public static final int x_location = 1;
-	public static final int y_location = 1;
-	public static final int radius = 1;
+	public static int x_location = 1;
+	public static int y_location = 1;
+	public static int radius = 1;
 }
 
 public class MainActivity extends Activity {
@@ -69,9 +69,6 @@ public class MainActivity extends Activity {
     	Thread t = new Thread(new UdpConnection(ip_address, socket));
     	t.start();
     }
-    
-    //Jared sucks.
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
