@@ -15,11 +15,13 @@ public class UdpConnection implements Runnable{
 	private DatagramSocket dataSocket = null;
 	private InetAddress ip_address = null;
 	private int socket = -1;
+	private Controller myController;
 	
-	public UdpConnection(InetAddress new_ip_address, int new_socket){
+	public UdpConnection(InetAddress new_ip_address, int new_socket, Controller myCont){
 		this.ip_address = new_ip_address;
 		this.socket = new_socket;
 		
+		this.myController = myCont;
 	}
 
 	public DatagramSocket getDataSocket() {
@@ -75,26 +77,26 @@ public class UdpConnection implements Runnable{
 		byte[] message = new byte[5];
 		message[0] = controllerAddress;
 		
-		message[1] = myController.rPad << R_DPAD ||
-					 myController.lPad << L_DPAD ||  
-					 myController.dPad << D_DPAD ||
-					 myController.uPad << U_DPAD ||
-					 myController.start << START_BUTTON ||
-					 myController.zTrig << Z_TRIG ||
-					 myController.bBut << B_BUTTON ||
-					 myController.aBut << A_BUTTON;
+		message[1] = myController.rPad.getState() << 0 ||
+					 myController.lPad.getState() << 1 ||  
+					 myController.dPad.getState() << 2 ||
+					 myController.uPad.getState() << 3 ||
+					 myController.start.getState() << 4 ||
+					 myController.zTrig.getState() << 5 ||
+					 myController.bBut.getState() << 6 ||
+					 myController.aBut.getState() << 7;
 		
-		message[2] = myController.rCBut << R_CBUTTON ||
-					 myController.lCBut << L_CBUTTON ||
-					 myController.dCBut << D_CBUTTON ||
-					 myController.uCBut << U_CBUTTON ||
-					 myController.rTrig << R_TRIG ||
-					 myController.lTrig << L_TRIG ||
-					 myController.res1 << Reserved1 ||
-					 myController.res2 << Reserved2;
+		message[2] = myController.rCBut.getState() << 0 ||
+					 myController.lCBut.getState() << 1 ||
+					 myController.dCBut.getState() << 2 ||
+					 myController.uCBut.getState() << 3 ||
+					 myController.rTrig.getState() << 4 ||
+					 myController.lTrig.getState() << 5 ||
+					 myController.res1.getState() << 6 ||
+					 myController.res2.getState() << 7;
 		
-		message[3] = myController.X_AXIS;
-		message[4] = myController.Y_AXIS;
+		message[3] = myController.joyStick.getXAxis();
+		message[4] = myController.joyStick.getYAxis();
 		*/
 		DatagramPacket p = new DatagramPacket(message, msg_length, ip_address, socket);
 		
