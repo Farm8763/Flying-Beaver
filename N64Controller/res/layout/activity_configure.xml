@@ -75,4 +75,23 @@
         android:text="@string/ip_address"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editText2"
+        android:layout_alignBottom="@+id/editText2"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/editText2"
+        android:ems="10"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editText1"
+        android:layout_alignLeft="@+id/editText1"
+        android:text="@string/port_number" />
+
 </RelativeLayout>
