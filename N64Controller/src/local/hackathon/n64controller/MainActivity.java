@@ -5,11 +5,13 @@ import java.net.UnknownHostException;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 
 import android.support.v4.view.MotionEventCompat;
 import android.util.Log;
 import android.view.Menu;
 
+import android.view.MenuItem;
 import android.view.View;
 import android.view.MotionEvent;
 import android.graphics.*;
@@ -63,7 +65,9 @@ public class MainActivity extends Activity {
         
     }
     
-    public void UDPtest(View button) throws UnknownHostException {
+    
+    
+    public void UDPtest() throws UnknownHostException {
     	Log.i("MyActivity", "Jared is a nice person...");
     	
     	InetAddress ip_address = InetAddress.getByName("192.168.1.17");
@@ -79,10 +83,37 @@ public class MainActivity extends Activity {
         return true;
     }
     
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+            	Intent myIntent = new Intent(this, ConfigureActivity.class);
+            	finish();
+                startActivity(myIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    
 	// Detection of a touch on the screen
 	@Override
 	public boolean onTouchEvent(MotionEvent event){ 
-
+		
+		Log.i("MyActivity", "Jarred is a nice person...");
+		    	
+		InetAddress ip_address = null;
+		try {
+			ip_address = InetAddress.getByName("192.168.1.21");
+		} catch (UnknownHostException e) {
+			Log.e("MyActivity", "Couldn't make ip address...");
+			e.printStackTrace();
+		}
+		int socket = 6969;
+		Thread t = new Thread(new UdpConnection(ip_address, socket));
+		t.start();		
+		
 		int action = MotionEventCompat.getActionMasked(event);
 		switch(action) {
 		case (MotionEvent.ACTION_DOWN) :

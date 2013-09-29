@@ -5,8 +5,10 @@ import java.net.UnknownHostException;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
@@ -42,5 +44,20 @@ public class ConfigureActivity extends Activity {
 		getMenuInflater().inflate(R.menu.configure, menu);
 		return true;
 	}
+	
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+            	Intent myIntent = new Intent(this, MainActivity.class);
+            	finish();
+                startActivity(myIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    
 
 }

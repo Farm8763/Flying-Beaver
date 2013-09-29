@@ -19,6 +19,7 @@ public class UdpConnection implements Runnable{
 	public UdpConnection(InetAddress new_ip_address, int new_socket){
 		this.ip_address = new_ip_address;
 		this.socket = new_socket;
+		
 	}
 
 	public DatagramSocket getDataSocket() {
@@ -63,6 +64,14 @@ public class UdpConnection implements Runnable{
 		
 		String messageStr="Hello Charles!";
 		int msg_length=messageStr.length();
+		//byte[] message = messageStr.getBytes();
+		byte[] message = new byte[5];
+		message[0] = 0x00;
+		message[1] = 0x10;		
+		message[2] = 0x10;
+		message[3] = 0x10;
+		message[4] = 0x10;
+		/*
 		byte[] message = new byte[5];
 		message[0] = controllerAddress;
 		
@@ -86,7 +95,7 @@ public class UdpConnection implements Runnable{
 		
 		message[3] = myController.X_AXIS;
 		message[4] = myController.Y_AXIS;
-		
+		*/
 		DatagramPacket p = new DatagramPacket(message, msg_length, ip_address, socket);
 		
 		
