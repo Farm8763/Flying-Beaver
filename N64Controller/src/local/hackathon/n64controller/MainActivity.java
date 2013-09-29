@@ -6,13 +6,11 @@ import java.net.UnknownHostException;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Intent;
 
 import android.support.v4.view.MotionEventCompat;
 import android.util.Log;
 import android.view.Menu;
 
-import android.view.MenuItem;
 import android.view.Display;
 import android.view.View;
 import android.view.MotionEvent;
@@ -100,7 +98,8 @@ public class MainActivity extends Activity {
         Log.i("MyActivity", "Jarred is a nice person...");
     }
         
-    public void UDPtest() throws UnknownHostException {
+
+    public void UDPtest(View button) throws UnknownHostException {
     	Log.i("MyActivity", "Jared is a nice person...");
     	
     	InetAddress ip_address = InetAddress.getByName("192.168.1.17");
@@ -116,23 +115,10 @@ public class MainActivity extends Activity {
         return true;
     }
     
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-            	Intent myIntent = new Intent(this, ConfigureActivity.class);
-            	finish();
-                startActivity(myIntent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-    
 	// Detection of a touch on the screen
 	@Override
 	public boolean onTouchEvent(MotionEvent event){ 
+		int index = MotionEventCompat.getActionIndex(event);
 		
 		Log.i("MyActivity", "Jarred is a nice person...");
 		    	
@@ -146,18 +132,21 @@ public class MainActivity extends Activity {
 		int socket = 6969;
 		
 		Thread t = new Thread(new UdpConnection(ip_address, socket,gameController));
+
 		t.start();		
 		
 		int action = MotionEventCompat.getActionMasked(event);
 		switch(action) {
 		case (MotionEvent.ACTION_DOWN) :
 			Log.d("Main","Action was DOWN");
+			gameController.update(new Point((int)MotionEventCompat.getX(event, index),(int)MotionEventCompat.getX(event, index)), index);
 		return true;
 		case (MotionEvent.ACTION_MOVE) :
 			Log.d("Main","Action was MOVE");
 		return true;
 		case (MotionEvent.ACTION_UP) :
 			Log.d("Main","Action was UP");
+			gameController.liftIndex(index);
 		return true;
 		case (MotionEvent.ACTION_CANCEL) :
 			Log.d("Main","Action was CANCEL");
