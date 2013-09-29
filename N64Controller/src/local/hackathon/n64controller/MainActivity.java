@@ -33,7 +33,23 @@ interface GamePad
     public static final int x_right = 16;
     public static final int  y_up = 17;
     public static final int y_down = 18;
-    
+    public static final int left_joystick = 19;
+    public static final int right_joystick = 20;
+}
+interface LeftJoystick
+{
+	public static final int x_location_start = 1;
+	public static final int x_location_end = 1;
+	public static final int y_location_start = 1;
+	public static final int y_location_end = 1;
+}
+
+interface RightJoystick
+{
+	public static final int x_location_start = 1;
+	public static final int x_location_end = 1;
+	public static final int y_location_start = 1;
+	public static final int y_location_end = 1;
 }
 
 public class MainActivity extends Activity {
@@ -67,7 +83,6 @@ public class MainActivity extends Activity {
 	public boolean onTouchEvent(MotionEvent event){ 
 
 		int action = MotionEventCompat.getActionMasked(event);
-
 		switch(action) {
 		case (MotionEvent.ACTION_DOWN) :
 			Log.d("Main","Action was DOWN");
@@ -88,5 +103,72 @@ public class MainActivity extends Activity {
 		default : 
 			return super.onTouchEvent(event);
 		}      
+	}
+	
+	public boolean isLeftJoystick(MotionEvent event){
+		if(inX("Left", event.getX()) && inY("Left", event.getY())){
+			return true;
+		}
+		else{
+			return false;	
+		}
+	}
+	
+	public boolean isRightJoystick(MotionEvent event){
+		if(inX("Right", event.getX()) && inY("Right", event.getY())){
+			return true;
+		}
+		else{
+			return false;	
+		}
+	}
+	
+	private boolean inX(String string, float x) {
+		if(string == "Right"){
+			if(x>= RightJoystick.x_location_start && x<=RightJoystick.x_location_end){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		else if(string == "Left"){
+			if(x >= LeftJoystick.x_location_start && x <= LeftJoystick.x_location_end){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		return false;
+	}
+
+	private boolean inY(String string, float y) {
+		if(string == "Right"){
+			if(y>= RightJoystick.y_location_start && y<=RightJoystick.y_location_end){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		else if(string == "Left"){
+			if(y >= LeftJoystick.y_location_start && y <= LeftJoystick.y_location_end){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		return false;
+	}
+
+	public boolean isJoystick(MotionEvent event){
+		if(isRightJoystick(event) || isLeftJoystick(event)){
+			return true;
+		}
+		else{
+			return false;	
+		}
 	}
 }
