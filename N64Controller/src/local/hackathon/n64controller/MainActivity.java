@@ -146,7 +146,7 @@ public class MainActivity extends Activity {
 			e.printStackTrace();
 		}
 		int socket = 6969;
-		Thread t = new Thread(new UdpConnection(ip_address, socket));
+		Thread t = new Thread(new UdpConnection(ip_address, socket,gameController));
 		t.start();		
 		
 		int action = MotionEventCompat.getActionMasked(event);
