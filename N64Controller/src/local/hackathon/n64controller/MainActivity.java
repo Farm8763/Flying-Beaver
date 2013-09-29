@@ -34,8 +34,7 @@ interface GamePad
     public static final int R_TRIG = 0x0C;
     public static final int L_TRIG = 0x0D;
     public static final int Reserved1 = 0x0E;
-    public static final int Reserved2 = 0x0F;
-  
+    public static final int Reserved2 = 0x0F;  
     public static final int X_AXIS = 0x10;
     public static final int Y_AXIS = 0x11;
     
@@ -50,7 +49,8 @@ public class MainActivity extends Activity {
 		display.getSize(size);
 		int width = size.x;
 		int height = size.y;
-		int distanceFromCenter = 10;
+		int distanceFromCenter = 20;
+		int defaultRadius = 10;
 		
 		Point R_DPAD = new Point((int)(width*0.125+distanceFromCenter), (int)(height*0.5));
 		Point L_DPAD = new Point((int)(width*0.125-distanceFromCenter), (int)(height*0.5));
@@ -71,7 +71,23 @@ public class MainActivity extends Activity {
 		Point L_TRIG = new Point((int)(width*0.25), (int)(height*0.125));
 		Point joystick = new Point((int)(width*0.5), (int)(height*0.75));
 
-		Controller currentController = new Controller()
+		Controller currentController = new Controller(
+				new PushButton(R_DPAD,defaultRadius),
+				new PushButton(L_DPAD,defaultRadius),
+				new PushButton(D_DPAD,defaultRadius),
+				new PushButton(U_DPAD,defaultRadius),
+				new PushButton(START_BUTTON,defaultRadius),
+				new PushButton(Z_TRIG,defaultRadius),
+				new PushButton(B_BUTTON,defaultRadius),
+				new PushButton(A_BUTTON,defaultRadius),
+				new PushButton(R_CBUTTON,defaultRadius),
+				new PushButton(L_CBUTTON,defaultRadius),
+				new PushButton(D_CBUTTON,defaultRadius),
+				new PushButton(U_CBUTTON,defaultRadius),
+				new PushButton(R_TRIG,defaultRadius),
+				new PushButton(L_TRIG,defaultRadius),
+				null, null, 
+				new JoyStick(joystick,defaultRadius));
 	}
 	
 	private UdpConnection udpConnection;
@@ -124,72 +140,5 @@ public class MainActivity extends Activity {
 		default : 
 			return super.onTouchEvent(event);
 		}      
-	}
-	
-	public boolean isLeftJoystick(MotionEvent event){
-		if(inX("Left", event.getX()) && inY("Left", event.getY())){
-			return true;
-		}
-		else{
-			return false;	
-		}
-	}
-	
-	public boolean isRightJoystick(MotionEvent event){
-		if(inX("Right", event.getX()) && inY("Right", event.getY())){
-			return true;
-		}
-		else{
-			return false;	
-		}
-	}
-	
-	private boolean inX(String string, float x) {
-		if(string == "Right"){
-			if(x>= RightJoystick.x_location - RightJoystick.radius && x<=RightJoystick.x_location + RightJoystick.radius){
-				return true;
-			}
-			else{
-				return false;
-			}
-		}
-		else if(string == "Left"){
-			if(x >= LeftJoystick.x_location - LeftJoystick.radius && x <= LeftJoystick.x_location + LeftJoystick.radius){
-				return true;
-			}
-			else{
-				return false;
-			}
-		}
-		return false;
-	}
-
-	private boolean inY(String string, float y) {
-		if(string == "Right"){
-			if(y>= RightJoystick.y_location - RightJoystick.radius && y<=RightJoystick.y_location + RightJoystick.radius){
-				return true;
-			}
-			else{
-				return false;
-			}
-		}
-		else if(string == "Left"){
-			if(y >= LeftJoystick.y_location - LeftJoystick.radius && y <= LeftJoystick.y_location + LeftJoystick.radius){
-				return true;
-			}
-			else{
-				return false;
-			}
-		}
-		return false;
-	}
-
-	public boolean isJoystick(MotionEvent event){
-		if(isRightJoystick(event) || isLeftJoystick(event)){
-			return true;
-		}
-		else{
-			return false;	
-		}
 	}
 }

@@ -1,5 +1,7 @@
 package local.hackathon.n64controller;
 
+import android.graphics.Point;
+
 public class Controller {
 	private PushButton rPad;
 	private PushButton lPad;

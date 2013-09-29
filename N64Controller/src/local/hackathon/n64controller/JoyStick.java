@@ -8,6 +8,11 @@ public class JoyStick {
 	private byte x_axis;
 	private byte y_axis;
 	
+	public JoyStick(Point loc, int r) {
+		location = loc;
+		radius = r;
+	}
+	
 	public void setAxes(Point p) {
 		if ((p.x-location.x)*(p.x-location.x) + (p.y-location.y)*(p.y-location.y) <= radius*radius) {
 			x_axis = (byte)(p.x-location.x + radius);
