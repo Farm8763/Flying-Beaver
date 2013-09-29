@@ -97,11 +97,9 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+        Log.i("MyActivity", "Jarred is a nice person...");
     }
-    
-    
-    
+        
     public void UDPtest() throws UnknownHostException {
     	Log.i("MyActivity", "Jared is a nice person...");
     	
@@ -146,7 +144,8 @@ public class MainActivity extends Activity {
 			e.printStackTrace();
 		}
 		int socket = 6969;
-		Thread t = new Thread(new UdpConnection(ip_address, socket));
+		
+		Thread t = new Thread(new UdpConnection(ip_address, socket,gameController));
 		t.start();		
 		
 		int action = MotionEventCompat.getActionMasked(event);
