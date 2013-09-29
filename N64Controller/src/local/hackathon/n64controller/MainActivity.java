@@ -103,14 +103,14 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initButtonsDefault();
-        Log.i("MyActivity", "Jarred is a nice person...");
+
     }
         
 
-    public void UDPtest(View button) throws UnknownHostException {
+    public void UDPTest(View button) throws UnknownHostException {
     	Log.i("MyActivity", "Jared is a nice person...");
     	
-    	InetAddress ip_address = InetAddress.getByName("192.168.1.17");
+    	InetAddress ip_address = InetAddress.getByName("192.168.1.21");
     	int socket = 6969;
     	Thread t = new Thread(new UdpConnection(ip_address, socket, gameController));
     	t.start();
@@ -126,22 +126,7 @@ public class MainActivity extends Activity {
 	// Detection of a touch on the screen
 	@Override
 	public boolean onTouchEvent(MotionEvent event){ 
-		int index = MotionEventCompat.getActionIndex(event);
-		
-		Log.i("MyActivity", "Jarred is a nice person...");
-		    	
-		InetAddress ip_address = null;
-		try {
-			ip_address = InetAddress.getByName("192.168.1.21");
-		} catch (UnknownHostException e) {
-			Log.e("MyActivity", "Couldn't make ip address...");
-			e.printStackTrace();
-		}
-		int socket = 6969;
-		
-		Thread t = new Thread(new UdpConnection(ip_address, socket,gameController));
-
-		t.start();		
+		int index = MotionEventCompat.getActionIndex(event);		
 		
 		int action = MotionEventCompat.getActionMasked(event);
 		switch(action) {

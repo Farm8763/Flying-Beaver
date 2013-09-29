@@ -67,12 +67,17 @@ public class UdpConnection implements Runnable{
 		String messageStr="Hello Charles!";
 		int msg_length=messageStr.length();
 		//byte[] message = messageStr.getBytes();
-		byte[] message = new byte[5];
-		message[0] = 0x00;
-		message[1] = 0x10;		
-		message[2] = 0x10;
-		message[3] = 0x10;
-		message[4] = 0x10;
+		byte[] message = new byte[8];
+		message[0] = (byte) 0x00;
+		message[1] = (byte) 0x10;		
+		message[2] = (byte) 0x10;
+		message[3] = (byte) 0xff;
+		message[4] = (byte) 0x5A;
+		message[5] = (byte) 0x5A;
+		message[6] = (byte) 0x12;
+		message[7] = (byte) 0x12;
+		
+		//int msg_length message.length;
 		/*
 		byte[] message = new byte[5];
 		message[0] = controllerAddress;
@@ -98,13 +103,13 @@ public class UdpConnection implements Runnable{
 		message[3] = myController.joyStick.getXAxis();
 		message[4] = myController.joyStick.getYAxis();
 		*/
-		DatagramPacket p = new DatagramPacket(message, msg_length, ip_address, socket);
+		DatagramPacket p = new DatagramPacket(message, 8, ip_address, socket);
 		
 		
 		while(true){
 			Log.i("MyActivity", "Sending message...");
 			try {
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				dataSocket.send(p);
 			} catch (IOException e) {
 				Log.e("MyActivity", "Unable to send message");
