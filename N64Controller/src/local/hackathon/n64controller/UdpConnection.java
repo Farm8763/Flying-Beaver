@@ -63,7 +63,30 @@ public class UdpConnection implements Runnable{
 		
 		String messageStr="Hello Charles!";
 		int msg_length=messageStr.length();
-		byte[] message = messageStr.getBytes();
+		byte[] message = new byte[5];
+		message[0] = controllerAddress;
+		
+		message[1] = myController.rPad << R_DPAD ||
+					 myController.lPad << L_DPAD ||  
+					 myController.dPad << D_DPAD ||
+					 myController.uPad << U_DPAD ||
+					 myController.start << START_BUTTON ||
+					 myController.zTrig << Z_TRIG ||
+					 myController.bBut << B_BUTTON ||
+					 myController.aBut << A_BUTTON;
+		
+		message[2] = myController.rCBut << R_CBUTTON ||
+					 myController.lCBut << L_CBUTTON ||
+					 myController.dCBut << D_CBUTTON ||
+					 myController.uCBut << U_CBUTTON ||
+					 myController.rTrig << R_TRIG ||
+					 myController.lTrig << L_TRIG ||
+					 myController.res1 << Reserved1 ||
+					 myController.res2 << Reserved2;
+		
+		message[3] = myController.X_AXIS;
+		message[4] = myController.Y_AXIS;
+		
 		DatagramPacket p = new DatagramPacket(message, msg_length, ip_address, socket);
 		
 		
