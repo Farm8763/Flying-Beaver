@@ -13,6 +13,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
     }
 
+    //Jared sucks.
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
