@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.graphics.*;
-//blah
+
 public class MainActivity extends Activity {
 
     @Override
@@ -12,8 +12,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
-    //Jared sucks.
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
