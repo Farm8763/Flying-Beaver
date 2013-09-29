@@ -4,6 +4,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 
 import android.support.v4.view.MotionEventCompat;
@@ -40,121 +41,37 @@ interface GamePad
     
 }
 
-interface LeftJoystick
-{
-	public static int x_location = 1;
-	public static int y_location = 1;
-	public static int radius = 1;
-}
-
-interface a
-{
-	public static int x_location = 1;
-	public static int y_location = 1;
-	public static int radius = 1;
-}
-
-interface c_down
-{
-	public static int x_location = 1;
-	public static int y_location = 1;
-	public static int radius = 1;
-}
-
-interface c_up
-{
-	public static int x_location = 1;
-	public static int y_location = 1;
-	public static int radius = 1;
-}
-
-interface c_right
-{
-	public static int x_location = 1;
-	public static int y_location = 1;
-	public static int radius = 1;
-}
-
-interface c_left
-{
-	public static int x_location = 1;
-	public static int y_location = 1;
-	public static int radius = 1;
-}
-
-interface l_bumper
-{
-	public static int x_location = 1;
-	public static int y_location = 1;
-	public static int radius = 1;
-}
-
-interface r_bumper
-{
-	public static int x_location = 1;
-	public static int y_location = 1;
-	public static int radius = 1;
-}
-
-interface start
-{
-	public static int x_location = 1;
-	public static int y_location = 1;
-	public static int radius = 1;
-}
-
-interface z
-{
-	public static int x_location = 1;
-	public static int y_location = 1;
-	public static int radius = 1;
-}
-
-interface up_arrow
-{
-	public static int x_location = 1;
-	public static int y_location = 1;
-	public static int radius = 1;
-}
-
-interface down_arrow
-{
-	public static int x_location = 1;
-	public static int y_location = 1;
-	public static int radius = 1;
-}
-
-interface left_arrow
-{
-	public static int x_location = 1;
-	public static int y_location = 1;
-	public static int radius = 1;
-}
-
-interface right_arrow
-{
-	public static int x_location = 1;
-	public static int y_location = 1;
-	public static int radius = 1;
-}
-
-interface RightJoystick
-{
-	public static int x_location = 1;
-	public static int y_location = 1;
-	public static int radius = 1;
-}
-
 public class MainActivity extends Activity {
 
+	@SuppressLint("NewApi")
 	public void initButtonsDefault(){
 		Display display = getWindowManager().getDefaultDisplay();
 		Point size = new Point();
 		display.getSize(size);
 		int width = size.x;
 		int height = size.y;
+		int distanceFromCenter = 10;
 		
+		Point R_DPAD = new Point((int)(width*0.125+distanceFromCenter), (int)(height*0.5));
+		Point L_DPAD = new Point((int)(width*0.125-distanceFromCenter), (int)(height*0.5));
+		Point D_DPAD = new Point((int)(width*0.125), (int)(height*0.5+distanceFromCenter));
+		Point U_DPAD = new Point((int)(width*0.125), (int)(height*0.5-distanceFromCenter));
 		
+		Point START_BUTTON = new Point((int)(width*0.5), (int)(height*0.5));
+		Point Z_TRIG = new Point((int)(width*0.5), (int)(height*0.875));
+		Point B_BUTTON = new Point((int)(width*0.75), (int)(height*0.5));
+		Point A_BUTTON = new Point((int)(width*0.875), (int)(height*0.625));
+		
+		Point R_CBUTTON = new Point((int)(width*0.875+distanceFromCenter), (int)(height*0.5));
+		Point L_CBUTTON = new Point((int)(width*0.875-distanceFromCenter), (int)(height*0.5));
+		Point D_CBUTTON = new Point((int)(width*0.875), (int)(height*0.5+distanceFromCenter));
+		Point U_CBUTTON = new Point((int)(width*0.875), (int)(height*0.5-distanceFromCenter));
+		
+		Point R_TRIG = new Point((int)(width*0.75), (int)(height*0.125));
+		Point L_TRIG = new Point((int)(width*0.25), (int)(height*0.125));
+		Point joystick = new Point((int)(width*0.5), (int)(height*0.75));
+
+		Controller currentController = new Controller()
 	}
 	
 	private UdpConnection udpConnection;
