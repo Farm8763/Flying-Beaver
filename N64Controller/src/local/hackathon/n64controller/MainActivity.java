@@ -42,7 +42,7 @@ interface GamePad
 public class MainActivity extends Activity {
 	public Controller gameController;
 	public ControllerView gameView;
-	
+
 	@SuppressLint("NewApi")
 	public void initButtonsDefault(){
 		Display display = getWindowManager().getDefaultDisplay();
