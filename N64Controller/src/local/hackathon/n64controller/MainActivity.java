@@ -41,6 +41,8 @@ interface GamePad
 
 public class MainActivity extends Activity {
 	public Controller gameController;
+	public ControllerView gameView;
+	
 	@SuppressLint("NewApi")
 	public void initButtonsDefault(){
 		Display display = getWindowManager().getDefaultDisplay();
@@ -87,6 +89,11 @@ public class MainActivity extends Activity {
 				new PushButton(L_TRIG,defaultRadius),
 				null, null, 
 				new JoyStick(joystick,defaultRadius));
+	
+		Bitmap b = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
+		Canvas c = new Canvas(b);
+		c.drawCircle(gameController.rCBut.location.x, gameController.rCBut.location.y, gameController.rCBut.radius, new Paint());
+		gameView.draw(c);
 	}
 	
 	private UdpConnection udpConnection;
@@ -95,6 +102,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initButtonsDefault();
 
     }
         
@@ -128,6 +136,7 @@ public class MainActivity extends Activity {
 		return true;
 		case (MotionEvent.ACTION_MOVE) :
 			Log.d("Main","Action was MOVE");
+			gameController.update(new Point((int)MotionEventCompat.getX(event, index),(int)MotionEventCompat.getX(event, index)), index);
 		return true;
 		case (MotionEvent.ACTION_UP) :
 			Log.d("Main","Action was UP");
@@ -135,6 +144,7 @@ public class MainActivity extends Activity {
 		return true;
 		case (MotionEvent.ACTION_CANCEL) :
 			Log.d("Main","Action was CANCEL");
+			gameController.update(new Point((int)MotionEventCompat.getX(event, index),(int)MotionEventCompat.getX(event, index)), index);
 		return true;
 		case (MotionEvent.ACTION_OUTSIDE) :
 			Log.d("Main","Movement occurred outside bounds " +

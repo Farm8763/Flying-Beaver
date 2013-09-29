@@ -3,10 +3,10 @@ package local.hackathon.n64controller;
 import android.graphics.Point;
 
 public class PushButton {
-	private byte state;
-	private Point location;
-	private int radius;
-	private int touchIndex;
+	public byte state;
+	public Point location;
+	public int radius;
+	public int touchIndex;
 	
 	public PushButton(Point loc, int r) {
 		state = 00000000;
