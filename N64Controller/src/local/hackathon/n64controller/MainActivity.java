@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.MotionEvent;
 import android.graphics.*;
 
-
 interface GamePad
 {
 	public static final int R_DPAD = 0x00;
@@ -41,7 +40,7 @@ interface GamePad
 }
 
 public class MainActivity extends Activity {
-
+	public Controller gameController;
 	@SuppressLint("NewApi")
 	public void initButtonsDefault(){
 		Display display = getWindowManager().getDefaultDisplay();
@@ -71,7 +70,7 @@ public class MainActivity extends Activity {
 		Point L_TRIG = new Point((int)(width*0.25), (int)(height*0.125));
 		Point joystick = new Point((int)(width*0.5), (int)(height*0.75));
 
-		Controller currentController = new Controller(
+		gameController = new Controller(
 				new PushButton(R_DPAD,defaultRadius),
 				new PushButton(L_DPAD,defaultRadius),
 				new PushButton(D_DPAD,defaultRadius),
