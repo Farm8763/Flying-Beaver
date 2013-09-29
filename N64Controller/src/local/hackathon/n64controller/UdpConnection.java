@@ -15,10 +15,12 @@ public class UdpConnection implements Runnable{
 	private DatagramSocket dataSocket = null;
 	private InetAddress ip_address = null;
 	private int socket = -1;
+	private Controller myController;
 	
-	public UdpConnection(InetAddress new_ip_address, int new_socket){
+	public UdpConnection(InetAddress new_ip_address, int new_socket, Controller myCont){
 		this.ip_address = new_ip_address;
 		this.socket = new_socket;
+		this.myController = myCont;
 	}
 
 	public DatagramSocket getDataSocket() {
@@ -64,28 +66,28 @@ public class UdpConnection implements Runnable{
 		String messageStr="Hello Charles!";
 		int msg_length=messageStr.length();
 		byte[] message = new byte[5];
-		message[0] = myController.number;
+		message[0] = controllerAddress;
 		
-		message[1] = myController.rPad 	<< 0 ||
-					 myController.lPad 	<< 1 ||  
-					 myController.dPad 	<< 2 ||
-					 myController.uPad 	<< 3 ||
-					 myController.start	<< 4 ||
-					 myController.zTrig << 5 ||
-					 myController.bBut 	<< 6 ||
-					 myController.aBut 	<< 7;
+		message[1] = myController.rPad.getState() << 0 ||
+					 myController.lPad.getState() << 1 ||  
+					 myController.dPad.getState() << 2 ||
+					 myController.uPad.getState() << 3 ||
+					 myController.start.getState() << 4 ||
+					 myController.zTrig.getState() << 5 ||
+					 myController.bBut.getState() << 6 ||
+					 myController.aBut.getState() << 7;
 		
-		message[2] = myController.rCBut << 0 ||
-					 myController.lCBut << 1 ||
-					 myController.dCBut << 2 ||
-					 myController.uCBut << 3 ||
-					 myController.rTrig << 4 ||
-					 myController.lTrig << 5 ||
-					 myController.res1 	<< 6 ||
-					 myController.res2 	<< 7;
+		message[2] = myController.rCBut.getState() << 0 ||
+					 myController.lCBut.getState() << 1 ||
+					 myController.dCBut.getState() << 2 ||
+					 myController.uCBut.getState() << 3 ||
+					 myController.rTrig.getState() << 4 ||
+					 myController.lTrig.getState() << 5 ||
+					 myController.res1.getState() << 6 ||
+					 myController.res2.getState() << 7;
 		
-		message[3] = myController.X_AXIS;
-		message[4] = myController.Y_AXIS;
+		message[3] = myController.X_AXIS.getXAxis();
+		message[4] = myController.Y_AXIS.getYAxis();
 		
 		DatagramPacket p = new DatagramPacket(message, msg_length, ip_address, socket);
 		
