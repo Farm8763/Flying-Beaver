@@ -17,26 +17,25 @@ import android.graphics.*;
 
 interface GamePad
 {
-    public static final int a = 1;
-    public static final int c_down = 2;
-    public static final int c_right = 3;
-    public static final int b = 4;
-    public static final int c_left = 5;
-    public static final int c_up = 6;
-    public static final int l_bumper = 7;
-    public static final int r_bumper = 8;
-    public static final int start = 9;
-    public static final int z = 10;
-    public static final int up_arrow = 11;
-    public static final int down_arrow = 12;
-    public static final int left_arrow = 13;
-    public static final int right_arrow = 14;
-    public static final int  x_left = 15;
-    public static final int x_right = 16;
-    public static final int  y_up = 17;
-    public static final int y_down = 18;
-    public static final int left_joystick = 19;
-    public static final int right_joystick = 20;
+	public static final int R_DPAD = 0x00;
+	public static final int L_DPAD = 0x01;  
+	public static final int D_DPAD = 0x02;
+	public static final int U_DPAD = 0x03;
+	public static final int START_BUTTON = 0x04;
+	public static final int Z_TRIG= 0x05;
+    public static final int B_BUTTON = 0x06;
+    public static final int A_BUTTON = 0x07;
+    public static final int R_CBUTTON = 0x08;
+    public static final int L_CBUTTON = 0x09;
+    public static final int D_CBUTTON = 0x0A;
+    public static final int U_CBUTTON = 0x0B;
+    public static final int R_TRIG = 0x0C;
+    public static final int L_TRIG = 0x0D;
+    public static final int Reserved1 = 0x0E;
+    public static final int Reserved2 = 0x0F;
+  
+    public static final int X_AXIS = 0x10;
+    public static final int Y_AXIS = 0x11;
 }
 
 interface LeftJoystick
