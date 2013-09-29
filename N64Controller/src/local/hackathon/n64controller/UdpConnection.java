@@ -20,6 +20,7 @@ public class UdpConnection implements Runnable{
 	public UdpConnection(InetAddress new_ip_address, int new_socket, Controller myCont){
 		this.ip_address = new_ip_address;
 		this.socket = new_socket;
+		
 		this.myController = myCont;
 	}
 
@@ -65,6 +66,14 @@ public class UdpConnection implements Runnable{
 		
 		String messageStr="Hello Charles!";
 		int msg_length=messageStr.length();
+		//byte[] message = messageStr.getBytes();
+		byte[] message = new byte[5];
+		message[0] = 0x00;
+		message[1] = 0x10;		
+		message[2] = 0x10;
+		message[3] = 0x10;
+		message[4] = 0x10;
+		/*
 		byte[] message = new byte[5];
 		message[0] = controllerAddress;
 		
@@ -88,7 +97,7 @@ public class UdpConnection implements Runnable{
 		
 		message[3] = myController.joyStick.getXAxis();
 		message[4] = myController.joyStick.getYAxis();
-		
+		*/
 		DatagramPacket p = new DatagramPacket(message, msg_length, ip_address, socket);
 		
 		

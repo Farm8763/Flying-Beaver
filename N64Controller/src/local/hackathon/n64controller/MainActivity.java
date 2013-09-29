@@ -118,6 +118,20 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onTouchEvent(MotionEvent event){ 
 		int index = MotionEventCompat.getActionIndex(event);
+		
+		Log.i("MyActivity", "Jarred is a nice person...");
+		    	
+		InetAddress ip_address = null;
+		try {
+			ip_address = InetAddress.getByName("192.168.1.21");
+		} catch (UnknownHostException e) {
+			Log.e("MyActivity", "Couldn't make ip address...");
+			e.printStackTrace();
+		}
+		int socket = 6969;
+		Thread t = new Thread(new UdpConnection(ip_address, socket));
+		t.start();		
+		
 		int action = MotionEventCompat.getActionMasked(event);
 		switch(action) {
 		case (MotionEvent.ACTION_DOWN) :
