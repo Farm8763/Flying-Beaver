@@ -3,6 +3,7 @@ package local.hackathon.n64controller;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.graphics.*;
 
 public class MainActivity extends Activity {
 
