@@ -117,17 +117,19 @@ public class MainActivity extends Activity {
 	// Detection of a touch on the screen
 	@Override
 	public boolean onTouchEvent(MotionEvent event){ 
-
+		int index = MotionEventCompat.getActionIndex(event);
 		int action = MotionEventCompat.getActionMasked(event);
 		switch(action) {
 		case (MotionEvent.ACTION_DOWN) :
 			Log.d("Main","Action was DOWN");
+			gameController.update(new Point((int)MotionEventCompat.getX(event, index),(int)MotionEventCompat.getX(event, index)), index);
 		return true;
 		case (MotionEvent.ACTION_MOVE) :
 			Log.d("Main","Action was MOVE");
 		return true;
 		case (MotionEvent.ACTION_UP) :
 			Log.d("Main","Action was UP");
+			gameController.liftIndex(index);
 		return true;
 		case (MotionEvent.ACTION_CANCEL) :
 			Log.d("Main","Action was CANCEL");
