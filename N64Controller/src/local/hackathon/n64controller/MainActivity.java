@@ -4,6 +4,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 
 import android.support.v4.view.MotionEventCompat;
@@ -148,12 +149,14 @@ interface RightJoystick
 
 public class MainActivity extends Activity {
 
-	public void initButtons(){
+	@SuppressLint("NewApi")
+	public void initButtonsDefault(){
 		Display display = getWindowManager().getDefaultDisplay();
 		Point size = new Point();
 		display.getSize(size);
 		int width = size.x;
 		int height = size.y;
+		
 		
 	}
 	
